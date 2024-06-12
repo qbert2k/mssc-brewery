@@ -35,11 +35,10 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<CustomerDto> handleUpdate(
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void handleUpdate(
             @PathVariable("customerId") final UUID customerId, @RequestBody CustomerDto customerDto) {
         customerService.updateCustomer(customerId, customerDto);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{customerId}")
